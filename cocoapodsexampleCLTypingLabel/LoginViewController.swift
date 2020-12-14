@@ -7,24 +7,42 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var contrasenaLabel: UITextField!
+    @IBOutlet weak var correoLabel: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func regitrarUsuarioButton(_ sender: UIButton) {
+        
+        if let email =  correoLabel.text, let password = contrasenaLabel.text {
+            Auth.auth().signIn(withEmail: email, password: password) { authResult, error
+            in
+            
+            guard let resultado = authResult, error == nil else {
+                guard let error = error else{
+                    return
+                }
+                if error.localizedDescription == "The email address is already in use by another account."{
+                    //self.alertaUsuario(msg: "Datos Clonados")
+                }
+                //self.alertaUsuario(msg: "")
+                print(error.localizedDescription)
+                return
+            }
+            print("Usuario: \(resultado.user)")
+            self.performSegue(withIdentifier: "loginUser", sender: self)
+        }
     }
-    */
+       
+        
+    }
+    
 
 }

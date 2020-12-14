@@ -8,14 +8,24 @@
 
 import UIKit
 import CLTypingLabel
-
+import FirebaseAuth
 class ViewController: UIViewController {
 
     @IBOutlet weak var texteBienvenida: CLTypingLabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        texteBienvenida.charInterval = 0.05
-       texteBienvenida.text = "Hola ¿Como estas?"
+        texteBienvenida.charInterval = 0.10
+        texteBienvenida.text = "Hola ¿Como estas?"
+        validarUserLogueado()
+    }
+    
+    //Validando que el usuario este o no logueado
+    
+    func validarUserLogueado(){
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            //El usuario esta logueado
+            performSegue(withIdentifier: "loginVerificado", sender: self)
+        }
     }
 
 

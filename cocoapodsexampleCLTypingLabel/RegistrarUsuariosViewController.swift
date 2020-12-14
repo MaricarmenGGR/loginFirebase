@@ -7,24 +7,48 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class RegistrarUsuariosViewController: UIViewController {
 
+    @IBOutlet weak var nombreTextField: UITextField!
+    @IBOutlet weak var correoTextField: UITextField!
+    @IBOutlet weak var contrasenaTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    @IBAction func registrarButton(_ sender: UIButton) {
+        
+        if let email =  correoTextField.text, let password = contrasenaTextField.text {
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error
+            in
+            
+            guard let resultado = authResult, error == nil else {
+                guard let error = error else{
+                    return
+                }
+                if error.localizedDescription == "The email address is already in use by another account."{
+                    self.alertaUsuario(msg: "Datos Clonados")
+                }
+                //self.alertaUsuario(msg: "")
+                print(error.localizedDescription)
+                return
+            }
+            print("Usuario: \(resultado.user)")
+            self.performSegue(withIdentifier: "registroUsuario", sender: self)
+        }
+    }
+          
+}
+    
+    func alertaUsuario(msg: String){
+        let alerta = UIAlertController(title: "UPS!", message: msg, preferredStyle: .alert)
+        let accion = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alerta.addAction(accion)
+        present(alerta, animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

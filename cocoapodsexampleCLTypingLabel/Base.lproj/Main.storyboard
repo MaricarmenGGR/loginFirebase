@@ -81,16 +81,17 @@
                     <navigationItem key="navigationItem" id="f9D-up-dhM"/>
                     <connections>
                         <outlet property="texteBienvenida" destination="j48-LY-SRL" id="SW3-AR-nuU"/>
+                        <segue destination="ALj-x3-7gt" kind="show" identifier="loginVerificado" id="0r9-T3-o9W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="138.61607142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="gei-E1-kCM">
             <objects>
-                <viewController id="a1h-kp-y9q" sceneMemberID="viewController">
+                <viewController id="a1h-kp-y9q" customClass="LoginViewController" customModule="cocoapodsexampleCLTypingLabel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kwH-XT-JnG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -98,12 +99,12 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4cR-fX-OGw">
                                 <rect key="frame" x="57" y="176" width="300" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Contraseña" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MHz-VH-Jsk">
                                 <rect key="frame" x="57" y="277" width="300" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MLX-G3-kY0">
                                 <rect key="frame" x="32" y="418" width="350" height="60"/>
@@ -113,7 +114,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ALj-x3-7gt" kind="show" id="bAF-KZ-oI9"/>
+                                    <action selector="regitrarUsuarioButton:" destination="a1h-kp-y9q" eventType="touchUpInside" id="LMu-iN-ewi"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -133,15 +134,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2zw-B4-T5N"/>
+                    <connections>
+                        <outlet property="contrasenaLabel" destination="MHz-VH-Jsk" id="DMg-4L-Tqe"/>
+                        <outlet property="correoLabel" destination="4cR-fX-OGw" id="a4S-53-2hI"/>
+                        <segue destination="ALj-x3-7gt" kind="show" identifier="loginUser" id="bEm-9r-dje"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fbd-82-vbu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1910" y="27"/>
         </scene>
-        <!--View Controller-->
+        <!--Registrar Usuarios View Controller-->
         <scene sceneID="m0A-6O-xH4">
             <objects>
-                <viewController id="KjB-sz-Y9C" sceneMemberID="viewController">
+                <viewController id="KjB-sz-Y9C" customClass="RegistrarUsuariosViewController" customModule="cocoapodsexampleCLTypingLabel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eBh-XK-cC3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,7 +166,7 @@
                                     <constraint firstAttribute="height" constant="34" id="oWg-Bq-JPw"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pi-v1-XuW">
                                 <rect key="frame" x="32" y="435" width="350" height="60"/>
@@ -170,7 +176,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ALj-x3-7gt" kind="show" id="Nae-hr-c9f"/>
+                                    <action selector="registrarButton:" destination="KjB-sz-Y9C" eventType="touchUpInside" id="1is-xA-eIT"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Correo" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUE-sF-RmE">
@@ -179,7 +185,7 @@
                                     <constraint firstAttribute="height" constant="34" id="CK4-y4-Ta1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sTj-fr-gB8"/>
@@ -201,15 +207,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="oe1-lW-3kJ"/>
+                    <connections>
+                        <outlet property="contrasenaTextField" destination="aar-fF-xMx" id="fqp-DT-ETt"/>
+                        <outlet property="correoTextField" destination="bUE-sF-RmE" id="enn-gl-pex"/>
+                        <outlet property="nombreTextField" destination="bDp-58-GMG" id="KGn-xL-Bqw"/>
+                        <segue destination="ALj-x3-7gt" kind="show" identifier="registroUsuario" id="E8H-wp-jID"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8aP-dL-Yap" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1857" y="754"/>
         </scene>
-        <!--View Controller-->
+        <!--Menu Principal View Controller-->
         <scene sceneID="wM0-P7-4Za">
             <objects>
-                <viewController id="ALj-x3-7gt" sceneMemberID="viewController">
+                <viewController id="ALj-x3-7gt" customClass="MenuPrincipalViewController" customModule="cocoapodsexampleCLTypingLabel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W1O-sS-kN3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,11 +240,17 @@
                             <constraint firstItem="t9I-el-EZg" firstAttribute="top" secondItem="t5Q-hh-z8M" secondAttribute="top" constant="25" id="xtY-4d-fUE"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="yXl-rD-JLs"/>
+                    <navigationItem key="navigationItem" id="yXl-rD-JLs">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="externaldrive.badge.xmark" catalog="system" id="uI3-oJ-9eE">
+                            <connections>
+                                <action selector="salirSesionButton:" destination="ALj-x3-7gt" id="cpS-4Y-CR6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s2I-Ba-seJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2683" y="40"/>
+            <point key="canvasLocation" x="3191" y="111"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qRp-8z-axJ">
@@ -257,9 +275,10 @@
         <designable name="j48-LY-SRL"/>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="Nae-hr-c9f"/>
+        <segue reference="0r9-T3-o9W"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="externaldrive.badge.xmark" catalog="system" width="128" height="92"/>
         <image name="loguitotec" width="468.5" height="288.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
